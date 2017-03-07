@@ -54,7 +54,7 @@ module.exports = {
         })
     ],
     devServer: {
-        port : "1000",
+        port : "999",
         contentBase: "./docs",
         // colors: true,
         historyApiFallback: true,

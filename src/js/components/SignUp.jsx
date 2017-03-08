@@ -38,7 +38,7 @@ class SignUp extends Component {
             <center>
                 <div className="form-inline centre container">
                     <div className="form-group">
-                        <input type="email" className="form-control" onChange={(e) => this.setState({email:e.target.value})} placeholder="Email" value={this.state.email}/>
+                        <input type="email" className="form-control" onChange={(e) => this.setState({email:e.target.value})} placeholder="Email" value={this.state.email} autoFocus/>
                         <input type="password" className="form-control" onChange={(e) => this.setState({password: e.target.value })} placeholder="Password"  value={this.state.password}/>
                         <button className="btn btn-primary" onClick={() => this.signUp()}>Sign Up</button>
                     </div>

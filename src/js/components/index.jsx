@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from "react-router";
+import { connect } from "react-redux";
 class App extends Component {
     render() {
         return (
@@ -21,5 +22,9 @@ class App extends Component {
         )
     }
 }
+function mapStateToProps(state){
+    console.log("State", state);
+    return {};
+}
 
-export default App;
+export default connect(mapStateToProps)(App);

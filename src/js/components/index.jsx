@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
-import {Link} from "react-router";
+import {Link ,hashHistory} from "react-router";
 import { connect } from "react-redux";
+import { auth } from "../firebase";
 class App extends Component {
+  
     render() {
         return (
             <center>
@@ -17,7 +19,8 @@ class App extends Component {
                         Sign Up
                     </button>
                 </Link>
-
+                
+               
             </center>
         )
     }

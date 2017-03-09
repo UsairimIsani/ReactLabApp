@@ -1,16 +1,8 @@
-let user = {
-    email : null
-}
-export default (state = user, action) => {
-    switch(action.type){
-        case 'SIGNED_IN' : 
-        const { email } = action;
-        user = {
-            email
-        }
-        return user;
-    default: 
-    return state;    
-    }
-
-}
+import { combineReducers }from "redux";
+import userReducer from "./userReducer";
+import donorReducer from "./donorsReducer";
+let reducer = combineReducers({
+    user : userReducer,
+    donors: donorReducer
+})
+export default reducer;

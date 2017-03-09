@@ -29,7 +29,7 @@ class SignIn extends Component {
             
           
         });
-        hashHistory.push("/home");
+        hashHistory.push("/bloodbank");
         
       
         
@@ -45,9 +45,11 @@ class SignIn extends Component {
                     </div>
                     <div>{this.state.error.message}</div>
                 </div>
+                <div className="form-inline container">
                 <div className="form-group">
                     <Link to="/"><button className="btn btn-success">Home</button></Link>
                     <Link to="/signup"><button className="btn btn-success">Sign Up</button></Link>
+                </div>
                 </div>
                 </center>
            

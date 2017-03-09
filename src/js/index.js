@@ -1,4 +1,4 @@
-// import "../css/bootstrap.min.css";
+
 import "../css/index.scss";
 import React , { Component }from "react";
 import ReactDOM , {render} from "react-dom";
@@ -13,39 +13,22 @@ import { auth } from "./firebase";
 import  SignUp from "./components/SignUp.jsx";
 import  SignIn from "./components/SignIn.jsx";
 import  logUser  from "./actions";
+import BloodBank from "./components/BloodBank.jsx";
+import "./style/tether.min.js";
 
 
 
 
 
-
-class Home extends Component {
-   signOut(){
-    auth.signOut();
-    hashHistory.replace("/");
-   }
-    render () {
-
-
-        return (
-            <div>
-                <h1>Home</h1>
-                <Link to="/">App</Link>
-                <button className="btn btn-danger" onClick={() => this.signOut()}>Sign out</button>
-
-            </div>
-        )
-    }
-}
 
 
 const middleWare = applyMiddleware(thunk , logger() );
 
- const store = createStore(reducer, middleWare);
+ const store = createStore(reducer,__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleWare);
 console.log(store.getState());
 auth.onAuthStateChanged(user =>
     {
-        if(user){
+          if(user){
            
            const { email } = user;
            store.dispatch(logUser(email));
@@ -58,7 +41,8 @@ render(
     <Provider   store = {store}>
         <Router path="/" history={hashHistory}>
             <Route path="/" component={App}></Route>
-            <Route path="/home" component={Home}></Route>
+            <Route path="/bloodbank" component={BloodBank}></Route>
+            
             <Route path="/signup" component={SignUp}></Route> 
             <Route path="/signin" component={SignIn}></Route>
         </Router>

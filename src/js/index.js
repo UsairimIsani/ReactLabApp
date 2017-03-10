@@ -24,7 +24,9 @@ import "./style/tether.min.js";
 
 const middleWare = applyMiddleware(thunk , logger() );
 
- const store = createStore(reducer,__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleWare);
+ const store = createStore(reducer,
+//  __REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  middleWare);
 console.log(store.getState());
 auth.onAuthStateChanged(user =>
     {

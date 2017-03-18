@@ -2,43 +2,50 @@
 import "../css/index.scss";
 import React , { Component }from "react";
 import ReactDOM , {render} from "react-dom";
-import { Router , Route , Link , hashHistory , IndexRoute } from "react-router";
-import { createStore , applyMiddleware } from "redux";
-import reducer from "./reducers";
-
-import thunk from "redux-thunk"
-import { Provider } from "react-redux";
-import logger from "redux-logger";
 import { auth , db } from "./firebase";
-import  SignUp from "./components/SignUp.jsx";
-import  SignIn from "./components/SignIn.jsx";
 
-import "./style/tether.min.js";
-
+// db.ref('donor').on('value', (s) => console.log("On value ::" , s.val()));
+// db.ref('donor').once('value', (s) => console.log("Once value ::" , s.val()));
 
 
-
-
-db.ref('donor').on('value', (s) => console.log("On value ::" , s.val()));
-db.ref('donor').on('value', (s) => console.log("On value ::" , s));
-db.ref('donor').once('value', (s) => console.log("Once value ::" , s.val()));
-
-
-
-// const middleWare = applyMiddleware(thunk , logger() );
-
-//  const store = createStore(reducer,
-//  __REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-//   middleWare);
-// store.subscribe(()=> {
-//     console.log('The State of the store', store.getState());
-// })
 class App extends Component{
-
+    constructor(){
+        super();
+        this.state = {
+            todo:[]
+        }
+    }
+    componentWillMount(){
+        db.ref('/todo').on('child_added',(s)=>{
+            let newTodo = Array.from(this.state.todo);
+            newTodo.push(s.val());
+            this.setState({todo:newTodo});
+        })
+    }
+    AddTodo(e){
+        e.preventDefault();
+        console.log("Input value : ", this.refs.todo.value);
+        if(this.refs.todo.value != null && this.refs.todo.value !== "" && this.refs.todo.value !== " "){
+            db.ref('/todo').push(this.refs.todo.value);
+        }else {
+            alert('write Something');
+        }
+        
+        this.refs.todo.value = '';
+    }
     render(){
         return (
             <div>
+                <form action="" 
+           
+                onSubmit={(e) => this.AddTodo(e)}                >
+                    <input type="text" ref="todo" autoFocus/>
+                    <input type="submit" value="Add todo"/>
+                </form>
                 <h1>Usairim Isani</h1>
+                {
+                    this.state.todo.map((value,index)=> {
+                        return <h1 key={index}>{value}</h1>})                }
             </div>
         )
     }

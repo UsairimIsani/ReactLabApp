@@ -1,12 +1,12 @@
 import * as firebase from "firebase";
-const config = {
-    apiKey: "AIzaSyCTkw0hajV7Wr__vgXAqqXnuS-U_Z-tBLc",
-    authDomain: "bloodbamk.firebaseapp.com",
-    databaseURL: "https://bloodbamk.firebaseio.com",
-    storageBucket: "bloodbamk.appspot.com",
-    messagingSenderId: "406426070701"
-  };
-const firebaseApp = firebase.initializeApp(config);
-export const db = firebaseApp.database();
-export const auth = firebaseApp.auth();
-export const strg = firebaseApp.storage(); 
+  var config = {
+    apiKey: "AIzaSyAahOKtI60F503DSxnruXFKpLGpyP8RqlM",
+    authDomain: "reactapp-592d9.firebaseapp.com",
+    databaseURL: "https://reactapp-592d9.firebaseio.com",
+    storageBucket: "reactapp-592d9.appspot.com",
+    messagingSenderId: "413974346396"
+  };
+  const Firebase = firebase.initializeApp(config);
+export const db = Firebase.database();
+export const auth = Firebase.auth();
+export const strg = Firebase.storage(); 

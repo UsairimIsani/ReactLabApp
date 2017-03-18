@@ -1,7 +1,7 @@
 {
-  "name": "bloodbank",
+  "name": "ReactLabApp",
   "version": "1.0.0",
-  "description": "Blood Bank App",
+  "description": "ReactLabApp",
   "main": "index.js",
   "scripts": {
     "start": "run b-s",
